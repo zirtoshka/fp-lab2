@@ -10,7 +10,7 @@
   (let [bag (-> empty-bag (add-to-bag 5) (add-to-bag 3) (add-to-bag 5))]
     (is (= 3 (:count (add-to-bag bag 5))))
     (is (= 1 (:count (remove-from-bag bag 5))))
-    (is (nil? (find-count (remove-from-bag bag 3) 3)))))
+    (is (= 0 (find-count (remove-from-bag bag 3) 3)))))
 
 (deftest filter-map-test
   (let [bag (-> empty-bag (add-to-bag 3) (add-to-bag 5) (add-to-bag 7))
