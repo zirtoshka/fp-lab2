@@ -4,7 +4,7 @@
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
    [clojure.test.check :refer [quick-check]]
-   [laupok2.core :refer :all]))
+   [laupok2.core :refer [add-to-bag combine-bags count-nodes empty-bag filter-bag find-count fold-left-bag fold-right-bag map-bag remove-from-bag]]))
 
 (deftest add-remove-test
   (let [bag (-> empty-bag (add-to-bag 5) (add-to-bag 3) (add-to-bag 5))]
