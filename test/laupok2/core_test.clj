@@ -1,6 +1,6 @@
 (ns laupok2.core-test
   (:require
-   [clojure.test :refer :all]
+   [clojure.test :refer [deftest is]]
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
    [clojure.test.check :refer [quick-check]]
