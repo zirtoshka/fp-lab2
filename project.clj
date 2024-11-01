@@ -8,4 +8,6 @@
   :main ^:skip-aot laupok2.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}}
+  :plugins [[dev.weavejester/lein-cljfmt "0.13.0"]]
+)

@@ -12,7 +12,6 @@
     (is (= 1 (:count (remove-from-bag bag 5))))
     (is (nil? (find-count (remove-from-bag bag 3) 3)))))
 
-
 (deftest filter-map-test
   (let [bag (-> empty-bag (add-to-bag 3) (add-to-bag 5) (add-to-bag 7))
         filtered-bag (filter-bag bag #(> % 4))
@@ -27,13 +26,10 @@
     (is (= 12 (fold-left-bag bag * 2)))
     (is (= 12 (fold-right-bag bag * 2)))))
 
-
 (deftest combine-test
   (let [bag1 (-> empty-bag (add-to-bag 1) (add-to-bag 2))
         bag2 (-> empty-bag (add-to-bag 3) (add-to-bag 4))]
-    (is (= 4 (count-nodes (combine-bags bag1 bag2)))))) 
-
-
+    (is (= 4 (count-nodes (combine-bags bag1 bag2))))))
 
 (def neutral-element-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
@@ -42,8 +38,6 @@
 
 (deftest test-neutral-element
   (quick-check 100 neutral-element-prop))
-
-
 
 (def associative-combine-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))
@@ -58,7 +52,6 @@
 (deftest test-associativity
   (quick-check 100 associative-combine-prop))
 
-
 (def filter-idempotent-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
                 (let [pred #(> % 5)
@@ -66,7 +59,6 @@
                       filtered-once (filter-bag bag pred)
                       filtered-twice (filter-bag filtered-once pred)]
                   (= filtered-once filtered-twice))))
-
 
 (deftest test-filter-idempotent
   (quick-check 100 filter-idempotent-prop))

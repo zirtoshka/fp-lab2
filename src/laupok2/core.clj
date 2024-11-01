@@ -29,13 +29,11 @@
   (compare-bags [_ bag2] (nil? bag2))
   (count-nodes [_] 0))
 
-
 (defn merge-trees
   [left right]
   (if (nil? left)
     right
     (assoc left :right (merge-trees (:right left) right))))
-
 
 (extend-type TreeNode
   Bag
@@ -107,8 +105,6 @@
          (count-nodes (:right node)))  ; Считаем узлы в правом поддереве
       0)))
 
-
-
 (defn find-count [node value]
   (let [cmp (compare value (:value node))]
     (cond
@@ -116,9 +112,6 @@
       (= 0 cmp) (:count node)  ;  совпадают - счетчик
       (neg? cmp) (find-count (:left node) value)  ; меньше, ищем в левом поддереве
       :else (find-count (:right node) value))))  ;  ищем в правом поддереве
-
-
-
 
 (def bagi (-> empty-bag (add-to-bag 3) (add-to-bag 5) (add-to-bag 7)))
 (println (:value bagi))
@@ -128,7 +121,6 @@
 (def bag1 (-> empty-bag (add-to-bag 1) (add-to-bag 2)))
 (def bag2 (-> empty-bag (add-to-bag 3) (add-to-bag 4)))
 (println (count-nodes (combine-bags bag1 bag2)))
-
 
 (println (:value bagi))
 
