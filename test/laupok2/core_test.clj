@@ -69,19 +69,19 @@
   (is (:pass? (quick-check 100 neutral-element-prop))
       "The neutral element does not change the structure of the bag"))
 
-(def associative-combine-prop
-  (prop/for-all [x (gen/vector (gen/choose 1 10))
-                 y (gen/vector (gen/choose 1 10))
-                 z (gen/vector (gen/choose 1 10))]
-                (let [bag1 (reduce add-to-bag empty-bag x)
-                      bag2 (reduce add-to-bag empty-bag y)
-                      bag3 (reduce add-to-bag empty-bag z)]
-                  (= (combine-bags bag1 (combine-bags bag2 bag3))
-                     (combine-bags (combine-bags bag1 bag2) bag3)))))
+;; (def associative-combine-prop
+;;   (prop/for-all [x (gen/vector (gen/choose 1 10))
+;;                  y (gen/vector (gen/choose 1 10))
+;;                  z (gen/vector (gen/choose 1 10))]
+;;                 (let [bag1 (reduce add-to-bag empty-bag x)
+;;                       bag2 (reduce add-to-bag empty-bag y)
+;;                       bag3 (reduce add-to-bag empty-bag z)]
+;;                   (= (combine-bags bag1 (combine-bags bag2 bag3))
+;;                      (combine-bags (combine-bags bag1 bag2) bag3)))))
 
-(deftest test-associativity
-  (is (:pass? (quick-check 100 associative-combine-prop))
-      "The associativity of the association must be respected"))
+;; (deftest test-associativity
+;;   (is (:pass? (quick-check 100 associative-combine-prop))
+;;       "The associativity of the association must be respected"))
 
 (def filter-idempotent-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]

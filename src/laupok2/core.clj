@@ -10,7 +10,7 @@
   (map-bag [bag f] "mapping a function to elements")
   (fold-left-bag [bag f init] "left fold")
   (fold-right-bag [bag f init] "right fold")
-  (combine-bags [bag1 bag2] "comb")
+  (combine-bags [bag1 bag2] "combine")
   (compare-bags [bag1 bag2] [bag element cmp] "comp")
   (count-nodes [node])
   (find-count [bag element] [bag element cmp]))
