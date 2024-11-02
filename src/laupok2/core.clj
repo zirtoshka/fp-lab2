@@ -1,8 +1,6 @@
 (ns laupok2.core
   (:gen-class) 
-  (:require
-   [clojure.spec.gen.alpha :as gen]
-   [clojure.test.check.properties :as prop]))
+  )
 
 (defprotocol Bag
   "for multiset (bag)"
