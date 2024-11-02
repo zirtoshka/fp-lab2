@@ -1,6 +1,5 @@
 (ns laupok2.core
-  (:gen-class) 
-  )
+  (:gen-class))
 
 (defprotocol Bag
   "for multiset (bag)"
@@ -114,8 +113,8 @@
 
   (count-nodes [node]
     (if node
-      (+ (:count node)  
-         (count-nodes (:left node))  
+      (+ (:count node)
+         (count-nodes (:left node))
          (count-nodes (:right node)))
       0))
   (find-count
@@ -137,8 +136,6 @@
 ;; (def bag3 (-> empty-bag (add-to-bag 5) (add-to-bag 6)))
 ;; (println ( combine-bags (combine-bags bag1 bag2) bag3))
 ;; (println (combine-bags  bag1 (combine-bags bag2 bag3) ))
-
-
 
 ;; (println (:value bagi))
 ;; (println (find-count (remove-from-bag bagi 3) 3))
