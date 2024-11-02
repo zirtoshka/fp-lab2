@@ -127,26 +127,6 @@
          :else (find-count (:right node) value cmp))))
     ([node value] (find-count node value compare))))
 
-;; (def bagi (-> empty-bag (add-to-bag 3) (add-to-bag 5) (add-to-bag 7)))
-;; (println (:value bagi))
-;; (println  (:value (first (filter-bag bagi #(> % 4)))))
-
-;; (def bag1 (-> empty-bag (add-to-bag 1) (add-to-bag 2)))
-;; (def bag2 (-> empty-bag (add-to-bag 3) (add-to-bag 4)))
-;; (def bag3 (-> empty-bag (add-to-bag 5) (add-to-bag 6)))
-;; (println ( combine-bags (combine-bags bag1 bag2) bag3))
-;; (println (combine-bags  bag1 (combine-bags bag2 bag3) ))
-
-;; (println (:value bagi))
-;; (println (find-count (remove-from-bag bagi 3) 3))
-;; (= 0 (find-count (remove-from-bag bagi 3) 3))
-;; (println (map-bag bagi #(* % 2)))
-
-;; (def bagi (-> empty-bag (add-to-bag "3")
-;;               (add-to-bag "4")
-;;               (remove-from-bag "2")))
-;; (println bagi)
-
 
 
 

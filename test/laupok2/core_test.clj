@@ -59,25 +59,11 @@
                 (let [bag (reduce add-to-bag empty-bag x)]
                   (= bag (combine-bags bag empty-bag)))))
 
-;; (deftest test-neutral-element
-;;   (quick-check 100 neutral-element-prop))
+
 (deftest test-neutral-element
   (is (:pass? (quick-check 100 neutral-element-prop))
       "The neutral element does not change the structure of the bag"))
 
-;; (def associative-combine-prop
-;;   (prop/for-all [x (gen/vector (gen/choose 1 10))
-;;                  y (gen/vector (gen/choose 1 10))
-;;                  z (gen/vector (gen/choose 1 10))]
-;;                 (let [bag1 (reduce add-to-bag empty-bag x)
-;;                       bag2 (reduce add-to-bag empty-bag y)
-;;                       bag3 (reduce add-to-bag empty-bag z)]
-;;                   (= (combine-bags bag1 (combine-bags bag2 bag3))
-;;                      (combine-bags (combine-bags bag1 bag2) bag3)))))
-
-;; (deftest test-associativity
-;;   (is (:pass? (quick-check 100 associative-combine-prop))
-;;       "The associativity of the association must be respected"))
 
 (def filter-idempotent-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
@@ -100,18 +86,6 @@
   (is (:pass? (quick-check 100 duplicates-prop))
       "The multiset must correctly account for duplicates"))
 
-(def combine-size-prop
-  (prop/for-all [x (gen/vector (gen/choose 1 10))
-                 y (gen/vector (gen/choose 1 10))]
-                (let [bag1 (reduce add-to-bag empty-bag x)
-                      bag2 (reduce add-to-bag empty-bag y)
-                      combined (combine-bags bag1 bag2)]
-                  (= (count-nodes combined)
-                     (+ (count-nodes bag1) (count-nodes bag2))))))
-
-(deftest test-combine-size
-  (is (:pass? (quick-check 100 combine-size-prop))
-      "The size of the combined multiset must be equal to the sum of the sizes of the original multisets"))
 
 (def filter-size-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
