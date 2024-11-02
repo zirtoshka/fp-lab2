@@ -79,26 +79,9 @@
                   (= (combine-bags bag1 (combine-bags bag2 bag3))
                      (combine-bags (combine-bags bag1 bag2) bag3)))))
 
-(defn bag-to-list [bag]
-  (fold-left-bag bag
-                 (fn [acc el] (concat acc (repeat (find-count bag el) el)))
-                 []))
-
-(def associative-combine-prop2
-  (prop/for-all [x (gen/vector (gen/choose 1 2))
-                 y (gen/vector (gen/choose 1 2))
-                 z (gen/vector (gen/choose 1 2))]
-                (let [bag1 (reduce add-to-bag empty-bag x)
-                      bag2 (reduce add-to-bag empty-bag y)
-                      bag3 (reduce add-to-bag empty-bag z)
-                      combined1 (combine-bags bag1 (combine-bags bag2 bag3))
-                      combined2 (combine-bags (combine-bags bag1 bag2) bag3)]
-                  (= (bag-to-list combined1) (bag-to-list combined2))
-                  )))
-
-(deftest test-associativity-2
+(deftest test-associativity
   (is (:pass? (quick-check 100 associative-combine-prop))
-      "Ассоциативность объединения должна соблюдаться"))
+      "The associativity of the association must be respected"))
 
 (def filter-idempotent-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
