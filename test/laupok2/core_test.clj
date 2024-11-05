@@ -59,11 +59,9 @@
                 (let [bag (reduce add-to-bag empty-bag x)]
                   (= bag (combine-bags bag empty-bag)))))
 
-
 (deftest test-neutral-element
   (is (:pass? (quick-check 100 neutral-element-prop))
       "The neutral element does not change the structure of the bag"))
-
 
 (def filter-idempotent-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
@@ -85,7 +83,6 @@
 (deftest test-duplicates
   (is (:pass? (quick-check 100 duplicates-prop))
       "The multiset must correctly account for duplicates"))
-
 
 (def filter-size-prop
   (prop/for-all [x (gen/vector (gen/choose 1 10))]
